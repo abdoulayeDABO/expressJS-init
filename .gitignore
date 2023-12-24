@@ -1,0 +1,5 @@
+.env
+package-lock.json
+sql/
+seeders/
+node_modules/
