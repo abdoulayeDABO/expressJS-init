@@ -24,10 +24,27 @@ Assurez-vous d'avoir Node.js et npm installés sur votre machine.
 ## Configuration
 
 1. **Copiez le fichier `.env.example` en `.env` et configurez les variables d'environnement nécessaires, telles que la clé secrète JWT, l'URL de la base de données, etc.
-
+2. **Changer les informations suivantes dans `config./config.json` selon votre configuration 
+   "development": {
+    "username": "db_username",
+    "password": "db_password",
+    "database": "expressjs_api_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+   }
+4. **Changer les informations suivantes dans `config./nodemailer.json` selon votre configuration 
+    auth: {
+      user: "youremail",
+      pass: "googleappkey",
+    },
+    
 ## Utilisation
 
 Lancez l'application avec la commande :
 
 ```bash
 npm start
+```
+Copier l'URL suivant la barre de recherche dans votre navigateur:
+```bash
+http://localhost:3000/users/all
