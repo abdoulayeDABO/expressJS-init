@@ -17,6 +17,7 @@ Assurez-vous d'avoir Node.js et npm installés sur votre machine.
 2. **Installez les dépendances :**
 
     ```bash
+    cd expressjs_authentication_api_starter
     npm install
     ```
 
