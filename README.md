@@ -20,28 +20,28 @@ Assurez-vous d'avoir Node.js et npm installés sur votre machine.
     cd expressjs_authentication_api_starter
     npm install
     ```
+3. Creer la base de données
+   ```bash
+   CREATE DATABASE IF NOT EXISTS expressjs_api_db;
+   USE expressjs_api_db;
+   CREATE TABLE IF NOT EXISTS users (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      email VARCHAR(255) UNIQUE NOT NULL,
+      password VARCHAR(255) NOT NULL,
+      name VARCHAR(255) NOT NULL,
+      role VARCHAR(255) DEFAULT 'user',
+      reset_password_token VARCHAR(255) UNIQUE DEFAULT NULL,
+      reset_password_expires DATETIME DEFAULT NULL,
+      validate_account_token VARCHAR(255) UNIQUE DEFAULT NULL,
+      validate_account_expires DATETIME DEFAULT NULL,
+      remember_token VARCHAR(255) UNIQUE DEFAULT NULL
+    );
+```
 
 ## Configuration
 
-1. **Copiez le fichier `.env.example` en `.env` et configurez les variables d'environnement nécessaires, telles que la clé secrète JWT, l'URL de la base de données, etc.
-2. **Changer les informations suivantes dans `config./config.json` selon votre configuration
- ```bash
-   "development": {
-    "username": "db_username",
-    "password": "db_password",
-    "database": "expressjs_api_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-   }
-```
-4. **Changer les informations suivantes dans `config./nodemailer.json` selon votre configuration 
-    ```bash
-    auth: {
-      user: "youremail",
-      pass: "googleappkey",
-    }
-    ```
-    
+1. **Copiez le fichier `.env.example` en `.env` et configurez les variables d'environnement nécessaires, renseignez les informations de votre base de données et vos informations d'envoi de mail dans les fichiers de configuration `config./config.json` et `config./nodemailer.json`.
+
 ## Utilisation
 
 Lancez l'application avec la commande :
