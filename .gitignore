@@ -4,4 +4,4 @@ sql/
 seeders/
 node_modules/
 config/config.json
-config/nodemailerConfig.json
+config/nodemailerConfig.js
