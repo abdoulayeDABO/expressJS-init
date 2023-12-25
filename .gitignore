@@ -4,8 +4,4 @@ sql/
 seeders/
 node_modules/
 config/config.json
-<<<<<<< HEAD
 config/nodemailerConfig.js
-=======
-config/nodemailerConfig.js
->>>>>>> f24578caf3eb3b2b931c23793aef8b3b6a6f8a5d
