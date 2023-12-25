@@ -39,7 +39,7 @@ Assurez-vous d'avoir Node.js et npm installés sur votre machine.
    ```
 ## Configuration
 
-1. **Copiez le fichier `.env.example` en `.env` et configurez les variables d'environnement nécessaires, renseignez les informations de votre base de données et vos informations d'envoi de mail dans les fichiers de configuration `config./config.json` et `config./nodemailer.json`.
+1. **Copiez lea fichiers `.env.example` en `.env`, `config./config.example.json` en `config./config.json`, `config./nodemailer.example.json` en `config./nodemailer.json`  et configurez les variables d'environnement nécessaires, renseignez les informations de votre base de données et vos informations d'envoi de mail dans les fichiers de configuration `config./config.json` et `config./nodemailer.json`.
 
 ## Utilisation
 
