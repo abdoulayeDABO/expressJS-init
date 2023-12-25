@@ -20,8 +20,10 @@ Assurez-vous d'avoir Node.js et npm installés sur votre machine.
     cd expressjs_authentication_api_starter
     npm install
     ```
-3. Creer la base de données
-   ```bash
+
+3. **Creer la base de données :**
+
+```bash
        CREATE DATABASE IF NOT EXISTS expressjs_api_db;
        USE expressjs_api_db;
        CREATE TABLE IF NOT EXISTS users (
@@ -36,7 +38,8 @@ Assurez-vous d'avoir Node.js et npm installés sur votre machine.
           validate_account_expires DATETIME DEFAULT NULL,
           remember_token VARCHAR(255) UNIQUE DEFAULT NULL
         );
-   ```
+ ```
+
 ## Configuration
 
 1. **Copiez le fichier `.env.example` en `.env` et configurez les variables d'environnement nécessaires, renseignez les informations de votre base de données et vos informations d'envoi de mail dans les fichiers de configuration `config./config.json` et `config./nodemailer.json`.
@@ -46,8 +49,9 @@ Assurez-vous d'avoir Node.js et npm installés sur votre machine.
 Lancez l'application avec la commande :
 
 ```bash
-npm start
+    npm start
 ```
+
 Copier l'URL suivant la barre de recherche dans votre navigateur:
 
 ```bash
