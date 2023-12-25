@@ -3,5 +3,5 @@ package-lock.json
 sql/
 seeders/
 node_modules/
-config/congig.json
-config/nodemailer.json
+config/config.json
+config/nodemailerConfig.json
