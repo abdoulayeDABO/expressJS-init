@@ -21,23 +21,11 @@ Assurez-vous d'avoir Node.js et npm installés sur votre machine.
     npm install
     ```
 
-3. **Creer la base de données :**
+3. **Effectuer les migrations:**
 
 ```bash
-       CREATE DATABASE IF NOT EXISTS expressjs_api_db;
-       USE expressjs_api_db;
-       CREATE TABLE IF NOT EXISTS users (
-          id INT AUTO_INCREMENT PRIMARY KEY,
-          email VARCHAR(255) UNIQUE NOT NULL,
-          password VARCHAR(255) NOT NULL,
-          name VARCHAR(255) NOT NULL,
-          role VARCHAR(255) DEFAULT 'user',
-          reset_password_token VARCHAR(255) UNIQUE DEFAULT NULL,
-          reset_password_expires DATETIME DEFAULT NULL,
-          validate_account_token VARCHAR(255) UNIQUE DEFAULT NULL,
-          validate_account_expires DATETIME DEFAULT NULL,
-          remember_token VARCHAR(255) UNIQUE DEFAULT NULL
-        );
+   npm install --save-dev sequelize-cli
+   npx sequelize-cli db:migrate   
  ```
 
 ## Configuration
