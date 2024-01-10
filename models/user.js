@@ -44,22 +44,22 @@ module.exports = (sequelize, DataTypes) => {
           return rawValue ? rawValue.toUpperCase() : null;
         }
       },
-      // first_name: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      //   get() {
-      //     const rawValue = this.getDataValue('first_name');
-      //     return rawValue ? rawValue.toUpperCase() : null;
-      //   }
-      // },
-      // last_name: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      //   get() {
-      //     const rawValue = this.getDataValue('last_name');
-      //     return rawValue ? rawValue.toUpperCase() : null;
-      //   }
-      // },
+      first_name: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        get() {
+          const rawValue = this.getDataValue('first_name');
+          return rawValue ? rawValue.toUpperCase() : null;
+        }
+      },
+      last_name: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        get() {
+          const rawValue = this.getDataValue('last_name');
+          return rawValue ? rawValue.toUpperCase() : null;
+        }
+      },
       role: {
         type: DataTypes.STRING,
         defaultValue: 'user',
@@ -78,7 +78,10 @@ module.exports = (sequelize, DataTypes) => {
       validate_account_expires: {
         type: DataTypes.DATE,
       },
-    
+      validated: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
   }, 
   {
     timestamps: false,
