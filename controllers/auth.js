@@ -139,11 +139,11 @@ async function login (req, res, next){
       where: {
         email: req.body.email,
       },
-      attributes: ['id', 'email','name', 'password', 'validate']
+      attributes: ['id', 'email','name', 'password', 'validated']
     });
 
-    if (!user || !user.validate) {
-      res.status(401).json({ status: "error", messaeg: "Utilisateur non trouvé ou compte desactive" });
+    if (!user || !user.validated) {
+      res.status(401).json({ status: "error", message: "Utilisateur non trouvé ou compte desactive" });
       return; 
     }
 
@@ -151,7 +151,7 @@ async function login (req, res, next){
     const hashedPassword = user.password;
     const match = await bcrypt.compare(userPassword, hashedPassword);
     if (!match){
-      res.status(400).json({ status: "error", messaeg: "Authentification échouée" });
+      res.status(400).json({ status: "error", message: "Authentification échouée" });
       return;
     } 
 
@@ -167,7 +167,7 @@ async function login (req, res, next){
 
   } catch (error) {
     console.log(error);
-    res.status(500).json({ status: "error", messaeg: "Erreur Interne du Serveur" });
+    res.status(500).json({ status: "error", message: "Erreur Interne du Serveur" });
   }
 }
 
@@ -182,13 +182,13 @@ async function changepassword (req, res, next){
     });
 
     if (!user) {
-      res.status(401).json({ status: "error", messaeg: "Utilisateur non trouvé" });
+      res.status(401).json({ status: "error", message: "Utilisateur non trouvé" });
       return;
     }
 
     const match = await bcrypt.compare(req.body.password1, user.password);
     if (!(req.body.password1 == req.body.password2 && !match)) {
-      res.status(400).json({ status: "error", messaeg: "Les mots de passe ne correspondent pas et/ou votre ancienne mot de passe est identique à la nouvelle" });
+      res.status(400).json({ status: "error", message: "Les mots de passe ne correspondent pas et/ou votre ancienne mot de passe est identique à la nouvelle" });
       return;
     }
 
