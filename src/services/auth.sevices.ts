@@ -3,7 +3,8 @@ const prisma = new PrismaClient();
 import nodemailer from "nodemailer";
 import { readFile } from '../utils';
 import HttpException from '../utils/http/exceptions';
-
+import userService from './user.sevices';
+import bcrypt from 'bcrypt';
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -29,9 +30,17 @@ const sendAccountValidationEmail = async ({name, email, token}: { name: string, 
       });
 }
 
+const signin = async ({email, password}: { email: string, password: string }) => {
+  const user = await userService.findUser(email);
+  if (!user) throw new HttpException('User not found');
+  const passwordMatch = await bcrypt.compare(password, user.password);
+  if (!passwordMatch) throw new HttpException('Invalid password');
+  return user;
+}
 
 const authService = {
-  sendAccountValidationEmail
+  sendAccountValidationEmail,
+  signin
 };
 
 export default authService;

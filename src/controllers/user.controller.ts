@@ -5,6 +5,7 @@ import { generateToken } from "../utils";
 import jwt from 'jsonwebtoken';
 const privateKey: any =  process.env.PRIVATE_KEY ;
 import bcrypt from 'bcrypt';
+import HttpResponse from "../utils/http/response";
 const saltRounds = 10;
 
 const getUser = async (req:Request, res:Response, next:NextFunction) => {
@@ -37,9 +38,9 @@ const createUser = async (req:Request, res:Response, next:NextFunction) => {
         await userService.createUser({...data});
         await authService.sendAccountValidationEmail({...data, token});
 
-        res.status(201).json({message: 'User created successfully'});
+        res.status(201).json(new HttpResponse(true, "User created successfully", null));
     }catch (error:any){
-        res.status(500).json(error.message);
+        res.status(500).json(new HttpResponse(false, error.message, null));
     }
 }
 
