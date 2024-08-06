@@ -317,6 +317,7 @@ img {
                     <td>
                       <p>Bonjour {{name}},</p>
                       <p>Merci de vous être inscrit sur notre site. Pour activer votre compte, veuillez cliquer sur le bouton ci-dessous :</p>
+                      <p style="color: #0d47a1;">Ce lien sera valable 15 minutes.</p>
                       <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                         <tbody>
                           <tr>
@@ -324,7 +325,7 @@ img {
                               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tbody>
                                   <tr>
-                                    <td> <a style="color: #ffffff;" href="https://votre-site.com/activation?token={{token}}" target="_blank">Activer mon compte</a> </td>
+                                    <td> <a style="color: #ffffff;" href="http://127.0.0.1:3000/api/v1/auth/validate-account?token={{token}}" target="_blank">Activer mon compte</a> </td>
                                   </tr>
                                 </tbody>
                               </table>

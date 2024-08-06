@@ -25,7 +25,6 @@ const createUser = async (req:Request, res:Response, next:NextFunction) => {
         const hashedPassword = await bcrypt.hash(data.password, salt);
         data.password = hashedPassword;
 
-        await userService.createUser({...data});
         const token = jwt.sign(
             {
               name: data.name,
@@ -33,11 +32,10 @@ const createUser = async (req:Request, res:Response, next:NextFunction) => {
               token: generateToken(),   
             },
             privateKey,  
-            { expiresIn: '1h'}
+            { expiresIn: 60 * 15} // expires in 15 minutes
           );
-
+        await userService.createUser({...data});
         await authService.sendAccountValidationEmail({...data, token});
-        await userService.updateUser(data.email, {activationToken: token.split('.')[0]});
 
         res.status(201).json({message: 'User created successfully'});
     }catch (error:any){
