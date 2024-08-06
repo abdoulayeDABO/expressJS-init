@@ -41,7 +41,7 @@ cp .env.example .env
 - gmail app key
 `API_KEY` 
 
-- Database connection information
+- Informations de connexion à la base de données MySQL
 `DATABASE_URL`
 
   
@@ -50,18 +50,18 @@ npm run dev
 ```
 
 
-## 🚀 About Me
-I'm a full stack developer with a passion for building scalable and efficient web applications. I have experience working with various technologies, including Node.js, Express.js, TypeScript, and MySQL. I am excited to contribute to the development of this project and help others build modern web applications with these powerful technologies.
+## 🚀 À Propos de Moi
+Je suis développeur full stack, passionné par la création d'applications web évolutives et efficaces. J'ai de l'expérience avec diverses technologies, y compris Node.js, Express.js, TypeScript et MySQL. Je suis ravi de contribuer au développement de ce projet et d'aider d'autres personnes à créer des applications web modernes avec ces technologies puissantes.
 
-## 📝 License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+## 📝 Licence
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
 
 ## 📝 Contact
-If you have any questions or suggestions, feel free to reach out to me at [daabdabo@gmail.com](mailto:daabdabo@gmail.com).
+Si vous avez des questions ou des suggestions, n'hésitez pas à me contacter à [daabdabo@gmail.com](mailto:daabdabo@gmail.com).
 
-## Support
-If you find this project helpful, please consider supporting it by giving it a star ⭐️ on GitHub. Your support means a lot to me and encourages me to continue working on this project. Thank you for your support!
+## Soutien
+Si vous trouvez ce projet utile, merci de lui donner une étoile ⭐️ sur GitHub. Votre soutien m'est très précieux et m'encourage à continuer de travailler sur ce projet. Merci pour votre soutien !
 
-A coffee (or a beer) is always appreciated:
+Un café (ou une bière) est toujours apprécié :
 
 <a href="https://www.buymeacoffee.com/codelab_sn" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>

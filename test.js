@@ -1,50 +1,15 @@
-const fs = require('fs');
-
-async function readFile(path) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(path, (err, data) => {
-      if (err) reject(err);
-      resolve(data);
-    });
-  });
-}
-
-try {
-    try {   
-        readFile('src/mails/activation.htm').then(body => console.log(body)).catch(error => {throw new Error("erreur")});
-      } catch (error) {
-        console.log(" error 1: " + error);
-        throw new Error(error);
-      }
-} catch (error) {
-    console.log(" error 2: " + error);
-}
 
 
-## API Reference
+## 🚀 About Me
+I'm a full stack developer with a passion for building scalable and efficient web applications. I have experience working with various technologies, including Node.js, Express.js, TypeScript, and MySQL. I am excited to contribute to the development of this project and help others build modern web applications with these powerful technologies.
 
-#### Get all items
+## 📝 License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-```http
-  GET /api/items
-```
+## 📝 Contact
+If you have any questions or suggestions, feel free to reach out to me at [daabdabo@gmail.com](mailto:daabdabo@gmail.com).
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
+## Support
+If you find this project helpful, please consider supporting it by giving it a star ⭐️ on GitHub. Your support means a lot to me and encourages me to continue working on this project. Thank you for your support!
 
-#### Get item
-
-```http
-  GET /api/items/${id}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
-
-
+A coffee (or a beer) is always appreciated:
