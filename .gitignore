@@ -5,4 +5,4 @@ seeders/
 node_modules/
 config/config.json
 config/nodemailerConfig.js
-
+test.js
