@@ -4,7 +4,7 @@ import userService from "../services/user.sevices";
 import { generateToken } from "../utils";
 import jwt from 'jsonwebtoken';
 const privateKey: any =  process.env.PRIVATE_KEY ;
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
 const getUser = async (req:Request, res:Response, next:NextFunction) => {
