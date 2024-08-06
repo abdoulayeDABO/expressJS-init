@@ -59,7 +59,7 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'i
 ## 📝 Contact
 Si vous avez des questions ou des suggestions, n'hésitez pas à me contacter à [daabdabo@gmail.com](mailto:daabdabo@gmail.com).
 
-## Soutien
+## 🌟 Soutien
 Si vous trouvez ce projet utile, merci de lui donner une étoile ⭐️ sur GitHub. Votre soutien m'est très précieux et m'encourage à continuer de travailler sur ce projet. Merci pour votre soutien !
 
 Un café (ou une bière) est toujours apprécié :
