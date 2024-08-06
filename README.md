@@ -62,6 +62,6 @@ Si vous avez des questions ou des suggestions, n'hésitez pas à me contacter à
 ## 🌟 Soutien
 Si vous trouvez ce projet utile, merci de lui donner une étoile ⭐️ sur GitHub. Votre soutien m'est très précieux et m'encourage à continuer de travailler sur ce projet. Merci pour votre soutien !
 
-Un café (ou une bière) est toujours apprécié :
+Un café est toujours apprécié
 
 <a href="https://www.buymeacoffee.com/codelab_sn" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
