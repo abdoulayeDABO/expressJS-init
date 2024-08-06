@@ -32,7 +32,12 @@
     "validator": "^13.11.0"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^22.1.0",
+    "@types/nodemailer": "^6.4.15",
     "nodemon": "^3.1.4",
     "prisma": "^5.17.0",
     "ts-node": "^10.9.2",

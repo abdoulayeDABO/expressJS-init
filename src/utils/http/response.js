@@ -1,3 +1,12 @@
+
+class Response extends 'http-errors' {
+    constructor(code, message, e = null) {
+        super(code, message);
+        this.e = e;
+    }
+ }
+
+
 export const sendErrorResponse = (res, code, errorMessage, e = null) => res.status(code).send({
     status: 'error',
     error: errorMessage,
@@ -10,5 +19,3 @@ export const sendSuccessResponse = (res, code, data, message = 'Successful') => 
     message,
 });
 
-// return sendErrorResponse(res, 422, 'User with that email or phone already exists');
-// import {sendErrorResponse, sendSuccessResponse} from "../utils/sendResponse";

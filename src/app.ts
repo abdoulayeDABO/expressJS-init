@@ -1,12 +1,9 @@
-import createError from 'http-errors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import uid from "uid";
 import cors from 'cors';
 import 'dotenv/config'
-import { userRoutes } from "./routes";
-import { authRoutes } from "./routes";
+import { userRoutes, authRoutes } from "./routes";
 
 // initialize express app
 const app = express()
