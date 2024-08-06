@@ -12,7 +12,26 @@ Ce starter est conçu pour vous fournir une base solide pour développer des app
 - **TypeScript** : Langage qui ajoute des types statiques à JavaScript pour améliorer la robustesse et la maintenabilité du code.
 - **MySQL** : Système de gestion de base de données relationnelle pour stocker et gérer vos données.
 
+## 🌟 Fonctionnalités
+
+- Creation de compte utilisateur 2FA avec email d'activation du compte
+- Authentification de compte utilisateur par mot de passe et est utilisateur
+- Reinitialisation du mot de passe
+- Suppression de compte utilisateur
+
 ## 🚀 Démarrage Rapide
 
 Clonez le dépôt, installez les dépendances, configurez votre base de données, et démarrez le serveur. C’est aussi simple que ça !
 
+```
+    git clone https://github.com/abdoulayeDABO/expressJS-init.git
+    cd expressJS-init
+    npm install
+    cp .env.example .env
+```
+
+  - Configurez votre base de données MySQL et ajoutez vos informations dans le fichier .env
+  
+```
+    npm run dev
+```
