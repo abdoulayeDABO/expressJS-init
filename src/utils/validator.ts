@@ -19,7 +19,7 @@ export const validateData = (req:any, res:any, next:any) => {
 const userValidationRules = () => {
   return [
     body('email').trim().isEmail().notEmpty().escape(),
-    body('password').trim().notEmpty().escape(),
+    body('password').trim().escape(),
     body('name').trim().escape(),
   ]
 }
