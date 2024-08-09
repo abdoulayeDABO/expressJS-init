@@ -1,3 +1,5 @@
+import { validateData } from './validator';
+import { sendEmail } from './mail';
 import fs from 'node:fs/promises';
 import crypto from 'crypto';
 
@@ -12,8 +14,15 @@ const readFile = async (path: string) => {
 
 const generateToken = () => crypto.randomUUID();
 
+const cleanData = () => {
+    //TODO : implement clean data function
+}
+
 
 export {
     readFile,
-    generateToken
+    generateToken,
+    cleanData,
+    sendEmail,
+    validateData
 }

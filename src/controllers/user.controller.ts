@@ -3,10 +3,12 @@ import authService from "../services/auth.sevices";
 import userService from "../services/user.sevices";
 import { generateToken } from "../utils";
 import jwt from 'jsonwebtoken';
-const privateKey: any =  process.env.PRIVATE_KEY ;
 import bcrypt from 'bcrypt';
-import HttpResponse from "../utils/http/response";
-const saltRounds = 10;
+
+const secretKey:any =  process.env.JWT_SECRET ;
+const saltRound:any = process.env.SALT_ROUND;
+
+
 
 const getUser = async (req:Request, res:Response, next:NextFunction) => {
     res.send(req.params.userID);
@@ -22,7 +24,7 @@ const createUser = async (req:Request, res:Response, next:NextFunction) => {
         let result:any = await userService.findUser(data.email);
         if(result) return res.status(400).json({message: 'User already exists'});
 
-        const salt = await bcrypt.genSalt(saltRounds);
+        const salt = await bcrypt.genSalt(saltRound);
         const hashedPassword = await bcrypt.hash(data.password, salt);
         data.password = hashedPassword;
 
@@ -32,15 +34,16 @@ const createUser = async (req:Request, res:Response, next:NextFunction) => {
               email: data.email,  
               token: generateToken(),   
             },
-            privateKey,  
+            secretKey,  
             { expiresIn: 60 * 15} // expires in 15 minutes
           );
         await userService.createUser({...data});
         await authService.sendAccountValidationEmail({...data, token});
+        res.status(201).json({message: 'User created successfully'});
 
-        res.status(201).json(new HttpResponse(true, "User created successfully", null));
     }catch (error:any){
-        res.status(500).json(new HttpResponse(false, error.message, null));
+
+        res.status(500).json({message: error.message});
     }
 }
 

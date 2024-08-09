@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// define a simple "/api/hello-world" route
+// define a simple "/api/v1/" route
 app.get('/api/v1/', (req, res, next) => {
     res.json('Hello, World!')
 })
@@ -23,6 +23,14 @@ app.get('/api/v1/', (req, res, next) => {
 // other routes
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/auth', authRoutes);
+
+// error handling
+app.use((err:any, req:any, res:any, next:any) => {
+    if (err) {
+    return res.status(err.statusCode || 500).json(err.message);  
+  }
+  next() 
+}); 
 
 
 export default app;

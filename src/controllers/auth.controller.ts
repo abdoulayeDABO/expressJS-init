@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from 'jsonwebtoken';
-import HttpException from "../utils/http/exceptions";
 import userService from "../services/user.sevices";
-const privateKey: any =  process.env.PRIVATE_KEY ;
 import validator from 'validator';
 import authService from "../services/auth.sevices";
-import HttpResponse from "../utils/http/response";
+import bcrypt from 'bcrypt';
+
+const secretKey:any =  process.env.JWT_SECRET ;
+const saltRound:any = process.env.SALT_ROUND;
 
 const signup = async (req:Request, res:Response, next:NextFunction) => {
     res.send(req.params.userID);
@@ -14,19 +15,20 @@ const signup = async (req:Request, res:Response, next:NextFunction) => {
 const signin = async (req:Request, res:Response, next:NextFunction) => {
     try {
         const data = {...req.body};
-        if (!validator.isEmail(data.email)) throw new HttpException('Invalid email');
+        if (!validator.isEmail(data.email)) throw new Error('Invalid email');
         const user = await authService.signin({...data});
         const token = jwt.sign(
             {
               email: user.email,  
             },
-            privateKey,  
+            secretKey,  
             { expiresIn: '1h'} // expires in 1h
           );
-        res.header('Authorization', `Bearer ${token}`);
-        res.status(200).send(new HttpResponse(true, 'Login successful', null));
+        res.cookie('token', token, { maxAge: 60 * 60 * 1000, httpOnly: true }); // 1 hour
+        res.status(200).json({message: 'Login successful', data: user});
+        
     } catch (error:any) {
-        res.status(500).json(new HttpResponse(false, error.message, null));
+        res.status(500).json({message: error.message});
     }
 }
 
@@ -35,7 +37,24 @@ const logout = async (req:Request, res:Response, next:NextFunction) => {
 }
 
 const sendPasswordResetEmail = async (req:Request, res:Response, next:NextFunction) => {
-    // Code for forget password functionality
+  try{
+    const data = {...req.body}
+    let result:any = await userService.findUser(data.email);
+    if(!result) return res.status(400).json({message: 'User not found '});
+    const token = jwt.sign(
+        {
+          email: data.email,  
+        },
+        secretKey,  
+        { expiresIn: 60 * 5} // expires in 5 minutes
+      );
+
+    await authService.sendPasswordResetEmail({email:data.email, token:token});
+    res.status(200).json({message: 'Reset password email sent successfully'});
+    
+  } catch (error:any){
+    res.status(500).json({message: error.message});
+  }
 }
 
 const sendAccountValidationEmail = async (req:Request, res:Response, next:NextFunction) => {
@@ -43,24 +62,37 @@ const sendAccountValidationEmail = async (req:Request, res:Response, next:NextFu
 }
 
 const resetPassword = async (req:Request, res:Response, next:NextFunction) => {
-    // Code for resetting password functionality
+    try {
+      const token = req.params.token;
+      const data = {...req.body}
+      const decoded:any = jwt.verify(token, secretKey);
+      if (!decoded) throw new Error('Token is invalid');
+      const user = await userService.findUser(decoded.email);
+      if (!user) throw new Error('User not found');
+      await userService.updateUser(decoded.email, {
+          password: await bcrypt.hash(data.password, saltRound),
+        });
+      res.status(200).json({message: "Password updated successfully"});
+  } catch (error: any) {
+    res.status(500).json({message: error.message});
+  }
 }
 
 const validateAccount = async (req:Request, res:Response, next:NextFunction) => {
   try {
       const token = req.params.token;
-      const decoded:any = jwt.verify(token, privateKey);
-      if (!decoded) throw new HttpException('Token is invalid');
+      const decoded:any = jwt.verify(token, secretKey);
+      if (!decoded) throw new Error('Token is invalid');
   
       const user = await userService.findUser(decoded.email);
-      if (!user) throw new HttpException('User not found');
+      if (!user) throw new Error('User not found');
       await userService.updateUser(decoded.email, {
           isActive: true,
         });
   
-      res.status(200).json(res.status(500).json(new HttpResponse(true, "Account validated successfully", null)));
+      res.status(200).json({message: "Account validated successfully"});
   } catch (error: any) {
-    res.status(500).json(new HttpResponse(false, error.message, null));
+    res.status(500).json({message: error.message});
   }
 }
 
