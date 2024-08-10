@@ -1,3 +1,4 @@
+// Mysql shema for user
 generator client {
   provider        = "prisma-client-js"
 }
@@ -32,3 +33,40 @@ model User {
   profilePicture String?
 }
 
+// MongoDB shema for User
+// uncomment this and comment the above schema to use mongodb
+// then run the command "prisma generate" to generate the prisma client
+// npx prisma generate
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "mongodb"
+//   url      = env("DATABASE_URL")
+// }
+
+// model User {
+//   id             String    @id @default(auto()) @map("_id") @db.ObjectId
+//   uid            String?   @unique
+//   email          String    @unique
+//   name           String?
+//   createdAt      DateTime  @default(now())
+//   updatedAt      DateTime  @updatedAt
+//   password       String
+//   role           String    @default("user")
+//   age            Int?
+//   address        String?
+//   phoneNumber    String?  
+//   accessToken    String?
+//   resetToken     String?
+//   activationToken String?
+//   country        String?
+//   city           String?
+//   state          String?
+//   zip            String?
+//   isActive       Boolean   @default(false)
+//   isVerified     Boolean   @default(false)
+//   profilePicture String?
+// }
