@@ -13,6 +13,7 @@ CREATE TABLE `User` (
     `phoneNumber` VARCHAR(191) NULL,
     `accessToken` VARCHAR(191) NULL,
     `resetToken` VARCHAR(191) NULL,
+    `activationToken` VARCHAR(191) NULL,
     `country` VARCHAR(191) NULL,
     `city` VARCHAR(191) NULL,
     `state` VARCHAR(191) NULL,

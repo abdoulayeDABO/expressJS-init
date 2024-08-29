@@ -5,10 +5,11 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/server.js",
-    "dev": "nodemon src/server.ts"
+    "dev": "nodemon src/server.ts",
+    "migrate": "node scripts/prisma-migrate.js"
   },
   "dependencies": {
-    "@prisma/client": "^5.17.0",
+    "@prisma/client": "^5.19.0",
     "@types/mocha": "^10.0.7",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",
@@ -50,7 +51,7 @@
     "@types/nodemailer": "^6.4.15",
     "mocha": "^10.7.3",
     "nodemon": "^3.1.4",
-    "prisma": "^5.17.0",
+    "prisma": "^5.19.0",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"

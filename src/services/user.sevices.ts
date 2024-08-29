@@ -1,31 +1,38 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-const createUser = async ({ name, email, password }: { name: string, email: string, password: string }) => {
-    const result = await prisma.user.create({
-        data: {
-          name,
-          email,
-          password
-        },
-    })
+const createUser = async ({
+  name,
+  email,
+  password,
+}: {
+  name: string;
+  email: string;
+  password: string;
+}) => {
+  const result = await prisma.user.create({
+    data: {
+      name,
+      email,
+      password,
+    },
+  });
 
-    return result;
-}
+  return result;
+};
 
 const findAllUsers = async () => {
-  const allUsers = await prisma.user.findMany()
-}
-
+  const allUsers = await prisma.user.findMany();
+};
 
 const findUser = async (email: string) => {
   const user = await prisma.user.findUnique({
     where: {
       email: email,
     },
-  })
-  return user
-}
+  });
+  return user;
+};
 
 const updateUser = async (email: string, data: any) => {
   const user = await prisma.user.update({
@@ -33,23 +40,23 @@ const updateUser = async (email: string, data: any) => {
       email,
     },
     data,
-  })
-}
+  });
+};
 
 const deteteUser = async (id: number) => {
   const user = await prisma.user.delete({
     where: {
       id,
     },
-  })
-}   
+  });
+};
 
 const userService = {
   createUser,
   findAllUsers,
   findUser,
   updateUser,
-  deteteUser
+  deteteUser,
 };
 
 export default userService;
