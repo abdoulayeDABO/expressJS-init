@@ -33,9 +33,12 @@ model User {
   profilePicture String?
 }
 
+
+
 // MongoDB shema for User
 // uncomment this and comment the above schema to use mongodb
-// then run the command "prisma generate" to generate the prisma client
+// then install prisma client and run prisma generate to generate the prisma client
+// npm install @prisma/client
 // npx prisma generate
 
 // generator client {
