@@ -6,7 +6,7 @@ const authRoutes: Router = express.Router();
 authRoutes.post('/login', authController.signin);
 
 // Route for sign up
-authRoutes.post('/signup', authController.signup);
+authRoutes.post('/register', authController.register);
 
 // Route for sign out
 authRoutes.post('/logout', authController.logout);
